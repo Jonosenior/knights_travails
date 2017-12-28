@@ -4,7 +4,6 @@ class Board
   def initialize
     @contents = Array.new(8) { Array.new(8)}
     @knight_piece = " ♘ "
-    #@knight = Knight.new(@contents, self)
   end
 
   def populate
@@ -13,7 +12,6 @@ class Board
         @contents[row][cell] = "#{row},#{cell}"
       end
     end
-    #@contents[4][3] = @knight_piece
     @contents
   end
 

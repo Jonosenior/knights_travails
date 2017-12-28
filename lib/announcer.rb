@@ -1,18 +1,14 @@
 class Announcer
 
   def introduce
-    puts "Welcome to the KNIGHT'S TRAVAILS"
-    puts "I'll find the shortest path for the Knight to travel between two squares."
-  end
-
-  def ask_user_for_square(square)
-
+    puts "\n\nWelcome to the KNIGHT'S TRAVAILS"
+    puts "\n\nI'll find the shortest path for the Knight to travel between two squares.\n\n"
+    puts "This is the board:"
   end
 
   def elicit_square(square=1)
-    if square == 1 then puts "Which square would you like your Knight to start on?"
-    else puts "And which square is your Knight travelling to?"
-    end
+    if square == 1 then puts "\n\nWhich square would you like your Knight to start on?"
+    else puts "\n\nAnd which square is your Knight travelling to?" end
     gets.chomp.gsub(/\D/, "").split('').map {|a| a.to_i}
   end
 
@@ -22,8 +18,3 @@ class Announcer
   end
 
 end
-#
-# @announcer = Announcer.new
-# target = @announcer.elicit_square
-# puts "#{target}"
-# puts target[0].class
