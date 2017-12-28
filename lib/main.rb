@@ -1,4 +1,4 @@
-require_relative 'knight'
+#require_relative 'knight'
 require_relative 'vertex'
 require_relative 'board'
 require_relative 'announcer'
@@ -11,23 +11,12 @@ def start
   @announcer = Announcer.new
   @announcer.introduce
   start_position = @announcer.elicit_square
-  target_position = @announcer.elicit_square
-  @knight_wayfinder = KnightWayfinder.new(@board, start_position)
-  #puts "#{@knight_wayfinder.list_possible_moves(start_position)}"
-  #start_vertex = Vertex.new(start_position)
-  # @knight_wayfinder.add_neighbouring_squares_to_visit(start_vertex)
-  # puts "#{@knight_wayfinder.to_visit.each {|a| a.location}}"
-
-  #puts @knight_wayfinder.list_possible_moves([3,2])
-
+  target_position = @announcer.elicit_square(2)
+  @announcer.wayfinder_introduction(start_position, target_position)
+  @knight_wayfinder = KnightWayfinder.new(start_position)
   target = @knight_wayfinder.find_target_square(target_position)
-  puts target.location
   @path = @knight_wayfinder.shortest_path(target)
   display_path
-
-
-
-
 end
 
 
