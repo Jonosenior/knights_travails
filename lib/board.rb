@@ -25,7 +25,7 @@ class Board
     end
   end
 
-  def move_knight(current_location, target_location)
+  def move_knight(current_location=[0,0], target_location)
     @contents[target_location[0]][target_location[1]] = @knight_piece
     @contents[current_location[0]][current_location[1]] = "#{current_location[0]},#{current_location[1]}"
   end

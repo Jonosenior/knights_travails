@@ -10,26 +10,42 @@ def start
   @board.visualise
   @announcer = Announcer.new
   @announcer.introduce
-  start_position = @announcer.elicit_input
-  target_position = @announcer.elicit_input
-  @knight_wayfinder = KnightWayfinder.new(@board)
-  @path = @knight_wayfinder.
+  start_position = @announcer.elicit_square
+  target_position = @announcer.elicit_square
+  @knight_wayfinder = KnightWayfinder.new(@board, start_position)
+  #puts "#{@knight_wayfinder.list_possible_moves(start_position)}"
+  #start_vertex = Vertex.new(start_position)
+  # @knight_wayfinder.add_neighbouring_squares_to_visit(start_vertex)
+  # puts "#{@knight_wayfinder.to_visit.each {|a| a.location}}"
+
+  #puts @knight_wayfinder.list_possible_moves([3,2])
+
+  target = @knight_wayfinder.find_target_square(target_position)
+  puts target.location
+  @path = @knight_wayfinder.shortest_path(target)
+  display_path
+
+
+
 
 end
 
+
 def display_path
   puts "So you start at #{@path[0]}, like so:"
-  @board.move_knight(locate_knight,@path[0])
+  @board.move_knight(@path[0])
   @board.visualise
   @path.each_with_index do |move, index|
     unless index < 1
       puts "\n\nThen you move to #{move}"
       @board.move_knight(@path[index-1], move)
-      @board.display_board
+      @board.visualise
     end
   end
   puts "\n\nAnd there you go!"
 end
+
+
 
 
 

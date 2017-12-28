@@ -5,8 +5,8 @@ class Announcer
     puts "What square would you like to start on?"
   end
 
-  def elicit_input
-    gets.chomp
+  def elicit_square
+    gets.chomp.gsub(/\D/, "").split('').map {|a| a.to_i}
   end
 
   def wayfinder_introduction(location, target)
@@ -15,3 +15,8 @@ class Announcer
   end
 
 end
+#
+# @announcer = Announcer.new
+# target = @announcer.elicit_square
+# puts "#{target}"
+# puts target[0].class
